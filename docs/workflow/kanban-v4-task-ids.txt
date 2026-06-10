@@ -1,0 +1,6 @@
+Board: ai-workshop-loop-demo
+
+V4 spec card: t_17994aa7
+V4 implement card: t_a27b3f7e
+V4 review card: t_0c2a792b
+V4 publish card: t_60779313

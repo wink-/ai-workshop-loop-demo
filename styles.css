@@ -182,6 +182,83 @@ td:first-child { color: var(--text); font-weight: 800; }
   align-items: stretch;
 }
 .ship-card { border-radius: 1.25rem; padding: 1.4rem; background: linear-gradient(135deg, rgba(240,165,0,0.15), rgba(125,211,252,0.08)); }
+.ball-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.72fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+.ball-stage,
+.ball-panel {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  border-radius: 1.35rem;
+}
+.ball-stage { padding: 1rem; overflow: hidden; }
+.ball-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.ball-canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 1rem;
+  background: #05070f;
+}
+.ball-caption {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+.ball-panel { padding: 1.25rem; display: grid; gap: 1rem; }
+.ball-controls { display: grid; gap: 1rem; }
+.control-row { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.slider-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  padding: 0.95rem 1rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.04);
+}
+.slider-row span,
+.slider-row strong {
+  font-size: 0.92rem;
+}
+.slider-row strong { color: var(--text); font-family: "JetBrains Mono", monospace; }
+.slider-row input[type="range"] {
+  grid-column: 1 / -1;
+  width: 100%;
+  accent-color: var(--amber);
+}
+.ball-notes {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+}
+.ball-notes p { margin: 0 0 0.65rem; color: var(--muted); }
+.ball-notes p:last-child { margin-bottom: 0; }
+.ball-notes a { color: var(--text); font-weight: 800; }
 .footer {
   max-width: 1180px;
   margin: 0 auto;
@@ -197,6 +274,7 @@ td:first-child { color: var(--text); font-weight: 800; }
 @media (max-width: 900px) {
   .hero-grid,
   .ship { grid-template-columns: 1fr; }
+  .ball-shell { grid-template-columns: 1fr; }
   .timeline,
   .role-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -205,6 +283,8 @@ td:first-child { color: var(--text); font-weight: 800; }
   .nav,
   .nav-links { flex-direction: column; }
   .hero-grid { margin-top: 4rem; }
+  .ball-stage,
+  .ball-panel { padding: 0.9rem; }
   .timeline,
   .role-grid { grid-template-columns: 1fr; }
   .footer { flex-direction: column; }

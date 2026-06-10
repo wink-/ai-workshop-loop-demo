@@ -22,6 +22,7 @@
         <a href="#loop">Loop</a>
         <a href="#workflow-v2">v2 workflow</a>
         <a href="#workflow-v3">v3 supervisor</a>
+        <a href="#ball-demo">3D ball</a>
         <a href="#roles">Roles</a>
         <a href="#evidence">Evidence</a>
         <a href="#ship">Ship</a>
@@ -32,7 +33,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Step 3 pilot · live GitHub Pages artifact</p>
         <h1 id="hero-title">A small website built by an AI workshop, not a single prompt.</h1>
-        <p class="hero-subtitle">Hermes acted as cockpit. Dedicated role profiles and CLIs contributed research, implementation notes, publication guidance, review, and verification. The v2 flow adds a Kanban board as the live source of truth for active work while Markdown files explain the rules. V3 adds a script-only supervisor that polls, diffs, and dispatches without turning the chat into the event loop.</p>
+        <p class="hero-subtitle">Hermes acted as cockpit. Dedicated role profiles and CLIs contributed research, implementation notes, publication guidance, review, and verification. The v2 flow adds a Kanban board as the live source of truth for active work while Markdown files explain the rules. V3 adds a script-only supervisor that polls, diffs, and dispatches without turning the chat into the event loop. V4 adds an interactive 3D bouncing ball demo so the site shows the workshop output as well as the workflow.</p>
         <div class="hero-actions">
           <a class="button primary" href="#evidence">View evidence</a>
           <a class="button secondary" href="https://github.com/wink-/ai-workshop-loop-demo">Open repository</a>
@@ -147,6 +148,56 @@ proof: tests + GitHub Pages URL</code></pre>
           <h3>No shell=True, no foreground server</h3>
           <p>All Kanban calls go through explicit <code>subprocess</code> argv lists. Validation stays script-based so the loop does not depend on a running HTTP server.</p>
         </article>
+      </div>
+    </section>
+
+    <section id="ball-demo" class="section ball-demo">
+      <div class="section-heading">
+        <p class="eyebrow">v4 3D bouncing ball</p>
+        <h2>Interactive physics in a tiny 3D stage.</h2>
+        <p>The demo runs entirely from static assets: pause and resume the simulation, reset the sphere, and tune gravity, speed, and trail length while the ball bounces around a wireframe volume.</p>
+      </div>
+      <div class="ball-shell">
+        <div class="ball-stage">
+          <div class="ball-toolbar" aria-label="Demo shortcuts and status">
+            <span class="pill">Space toggles play</span>
+            <span class="pill">R resets</span>
+            <span class="pill" id="ball-status">Live</span>
+          </div>
+          <canvas id="ball-canvas" class="ball-canvas" width="960" height="640" aria-label="Three-dimensional bouncing ball simulation"></canvas>
+          <p class="ball-caption">The ball is rendered with perspective, shadows, and a fading trail so the motion reads like a small glass box scene instead of a flat circle.</p>
+        </div>
+        <aside class="ball-panel" aria-label="3D ball controls">
+          <div class="ball-controls">
+            <div class="control-row">
+              <button id="ball-play-toggle" class="button primary" type="button" aria-pressed="false">Pause</button>
+              <button id="ball-reset" class="button secondary" type="button">Reset</button>
+            </div>
+
+            <label class="slider-row" for="ball-gravity">
+              <span>Gravity</span>
+              <strong id="ball-gravity-value">1.00</strong>
+              <input id="ball-gravity" type="range" min="0.4" max="2.2" step="0.05" value="1">
+            </label>
+
+            <label class="slider-row" for="ball-speed">
+              <span>Speed</span>
+              <strong id="ball-speed-value">1.00</strong>
+              <input id="ball-speed" type="range" min="0.5" max="2.5" step="0.05" value="1">
+            </label>
+
+            <label class="slider-row" for="ball-trails">
+              <span>Trail length</span>
+              <strong id="ball-trails-value">24</strong>
+              <input id="ball-trails" type="range" min="0" max="60" step="1" value="24">
+            </label>
+          </div>
+          <div class="ball-notes">
+            <p><strong>Bounces:</strong> <span id="ball-bounces">0</span></p>
+            <p><strong>Controls:</strong> Static Canvas + requestAnimationFrame, no build step, no runtime dependencies.</p>
+            <p><a href="docs/workflow/3d-bouncing-ball-v4.md">Read the workflow receipt</a></p>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -270,5 +321,6 @@ proof: tests + GitHub Pages URL</code></pre>
     <p>Built as Step 3 of the Hermes AI Workshop workflow.</p>
     <p><a href="https://github.com/wink-/ai-workshop-loop-demo">Source on GitHub</a></p>
   </footer>
+  <script src="scripts/ball_demo.js"></script>
 </body>
 </html>

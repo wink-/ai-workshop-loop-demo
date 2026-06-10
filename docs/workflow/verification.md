@@ -88,3 +88,29 @@ Notes:
 - The v3 supervisor keeps state outside the worktree by default in `~/.hermes/state/ai-workshop-loop-demo/loop-supervisor.json`.
 - The supervisor reports only status changes and attention items, and it can skip dispatch entirely in dry-run mode.
 
+## v4 3D bouncing ball publication
+Passed.
+
+- Board: `ai-workshop-loop-demo`
+- Publish card: `t_60779313`
+- Parent review card: `t_0c2a792b` — approved
+- Implement card: `t_a27b3f7e`
+- Spec card: `t_17994aa7`
+- Commit verified: `306cc92fe45523debac471dc8bbd5b047f5b92a3`
+- Local validation:
+  - `python3 scripts/validate_static_site.py`
+  - `node --check scripts/ball_demo.js`
+  - `git diff --check`
+- GitHub Pages run: https://github.com/wink-/ai-workshop-loop-demo/actions/runs/27291116744
+- Live URL: https://wink-.github.io/ai-workshop-loop-demo/
+- Endpoint check: `HTTP/2 200`
+- Content checks passed for:
+  - `v4 3D bouncing ball`
+  - `ball-canvas`
+  - `ball-play-toggle`
+  - `ball-reset`
+  - `docs/workflow/3d-bouncing-ball-v4.md`
+
+Notes:
+- The v4 demo stays static: Canvas + requestAnimationFrame only, no build step and no runtime dependencies.
+- The receipt and task ID list are kept in sync with the published card graph.

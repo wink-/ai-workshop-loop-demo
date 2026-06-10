@@ -39,7 +39,7 @@ text = INDEX.read_text(encoding="utf-8")
 parser = LinkParser()
 parser.feed(text)
 
-for required in ["main", "loop", "roles", "evidence", "ship"]:
+for required in ["main", "loop", "ball-demo", "roles", "evidence", "ship", "ball-canvas", "ball-play-toggle", "ball-reset"]:
     if required not in parser.ids:
         fail(f"missing required id #{required}")
 
@@ -67,7 +67,9 @@ for expected in [
     "docs/workflow/kanban-backed-workflow.md",
     "docs/workflow/markdown-task-vs-kanban-card.md",
     "docs/workflow/loop-supervisor-v3.md",
+    "docs/workflow/3d-bouncing-ball-v4.md",
     "docs/workflow/verification.md",
+    "scripts/ball_demo.js",
 ]:
     if not (ROOT / expected).exists():
         fail(f"missing workflow artifact: {expected}")
