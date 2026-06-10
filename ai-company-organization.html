@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hermes Multi-Profile Company OS — Draft Organization</title>
+  <meta name="description" content="Draft organization model for running a small AI company with Hermes multi-profile agents.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070a12;
+      --panel: rgba(15, 23, 42, 0.78);
+      --panel-strong: rgba(15, 23, 42, 0.96);
+      --text: #e5edf8;
+      --muted: #9fb0c8;
+      --line: rgba(148, 163, 184, 0.24);
+      --cyan: #5eead4;
+      --blue: #60a5fa;
+      --violet: #a78bfa;
+      --gold: #facc15;
+      --green: #86efac;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(96, 165, 250, 0.22), transparent 34rem),
+        radial-gradient(circle at 80% 10%, rgba(167, 139, 250, 0.18), transparent 32rem),
+        radial-gradient(circle at 50% 60%, rgba(94, 234, 212, 0.10), transparent 34rem),
+        linear-gradient(180deg, #050711, var(--bg));
+      line-height: 1.6;
+    }
+
+    a { color: var(--cyan); }
+
+    .shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 72px;
+    }
+
+    header.hero {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(28px, 5vw, 56px);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.62));
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255,255,255,0.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -45% 35%;
+      height: 380px;
+      background: radial-gradient(circle, rgba(94, 234, 212, 0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--cyan);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.45rem, 7vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      max-width: 920px;
+    }
+
+    .lede {
+      margin: 24px 0 0;
+      color: var(--muted);
+      max-width: 760px;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 28px 0 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(15, 23, 42, 0.6);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    section {
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      padding: clamp(22px, 4vw, 34px);
+      backdrop-filter: blur(18px);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.5rem, 3vw, 2.35rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    h3 { margin: 0 0 10px; }
+    p { color: var(--muted); }
+
+    .grid { display: grid; gap: 16px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(2, 6, 23, 0.42);
+      min-height: 100%;
+    }
+
+    .card strong { display: block; font-size: 1.08rem; }
+    .card span { display: block; color: var(--muted); font-size: 0.93rem; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      color: #07111f;
+      background: var(--cyan);
+      font-weight: 900;
+      font-size: 0.74rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .tag.gold { background: var(--gold); }
+    .tag.blue { background: var(--blue); }
+    .tag.violet { background: var(--violet); }
+    .tag.green { background: var(--green); }
+
+    .org-flow {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .role-label {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(94, 234, 212, 0.12);
+      border: 1px solid rgba(94, 234, 212, 0.34);
+      font-weight: 900;
+    }
+
+    .role-body {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--panel-strong);
+    }
+
+    th, td {
+      padding: 13px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th { color: var(--text); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    td { color: var(--muted); }
+    td:first-child, td:nth-child(2) { color: var(--text); font-weight: 700; }
+
+    ul { color: var(--muted); padding-left: 1.2rem; }
+    li + li { margin-top: 6px; }
+
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(2, 6, 23, 0.72);
+      color: #dbeafe;
+    }
+
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 760px) {
+      .grid.two, .grid.three { grid-template-columns: 1fr; }
+      .flow-row { grid-template-columns: 1fr; }
+      th:nth-child(4), td:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <p class="eyebrow">Draft organization model</p>
+      <h1>Hermes Multi-Profile Company OS</h1>
+      <p class="lede">A proposed operating structure for running a small AI company through Hermes profiles: executive cockpit, senior reasoning, lower-cost implementation lanes, quality gates, release ops, and durable knowledge management.</p>
+      <nav aria-label="Page sections">
+        <a href="#thesis">Thesis</a>
+        <a href="#org">Org chart</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#routing">Routing</a>
+        <a href="#workflow">Workflow</a>
+        <a href="docs/ai-company-organization-draft.md">Markdown source</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="thesis">
+        <h2>Operating thesis</h2>
+        <div class="grid three">
+          <article class="card"><span class="tag gold">Human</span><strong>Decides why</strong><span>Rob sets direction, priority, taste, budget, and final go/no-go.</span></article>
+          <article class="card"><span class="tag blue">Cockpit</span><strong>Decides what and when</strong><span>The default profile decomposes goals, routes tasks, checks status, and verifies deliverables.</span></article>
+          <article class="card"><span class="tag violet">Company</span><strong>Executes with gates</strong><span>Specialist profiles implement, review, publish, and preserve knowledge through a controlled Kanban workflow.</span></article>
+        </div>
+      </section>
+
+      <section id="org">
+        <h2>Executive operating layer</h2>
+        <div class="org-flow">
+          <div class="flow-row"><div class="role-label">CEO / Product Owner</div><div class="role-body"><strong>Rob</strong><br>Final authority for priorities, taste, budget, product direction, and approval.</div></div>
+          <div class="flow-row"><div class="role-label">COO / Chief of Staff</div><div class="role-body"><strong>default</strong><br>Lean cockpit: decomposes work, routes profiles, verifies outputs, keeps status concise.</div></div>
+          <div class="flow-row"><div class="role-label">Supervisor</div><div class="role-body"><strong>supervisor / cron watcher</strong><br>Monitors boards, alerts on transitions and blockers, suggests next actions without making major product decisions.</div></div>
+        </div>
+      </section>
+
+      <section id="engineering">
+        <h2>Engineering and delivery roles</h2>
+        <table>
+          <thead><tr><th>Role</th><th>Profile</th><th>Provider / model</th><th>Best use</th></tr></thead>
+          <tbody>
+            <tr><td>Senior Engineer</td><td>coder</td><td>openai-codex / gpt-5.5</td><td>Architecture, hard reasoning, ambiguous specs, tricky debugging, rescue work, high-stakes implementation.</td></tr>
+            <tr><td>Mid-Level Multimodal Engineer</td><td>coder-opencode</td><td>opencode-go / mimo-v2.5-pro</td><td>Scoped UI/code, screenshot-informed work, large-context/multimodal tasks, cheaper first attempts.</td></tr>
+            <tr><td>Mid-Level Text Engineer</td><td>coder-zai</td><td>zai / glm-5.1</td><td>Scoped text-only implementation, refactors, docs/code repair, alternate lower-cost attempts.</td></tr>
+            <tr><td>Staff Reviewer / QA</td><td>reviewer</td><td>openai-codex / gpt-5.5</td><td>Diffs, specs, validation evidence, architecture, security, accessibility basics, scope control.</td></tr>
+            <tr><td>Design QA / Taste Reviewer</td><td>visual-reviewer</td><td>openai-codex / gpt-5.5</td><td>Screenshots/previews, first-glance impact, hierarchy, polish, responsiveness, human preference.</td></tr>
+            <tr><td>Release Engineer</td><td>github-ops</td><td>openai-codex / gpt-5.5</td><td>GitHub issues, PRs, CI, release notes, gh/Copilot handoffs, static preview publishing.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Research, creative, ops, and knowledge</h2>
+        <div class="grid two">
+          <article class="card"><span class="tag">Research</span><strong>researcher → Research Analyst</strong><span>Gathers facts from web/docs/repos, compares options, summarizes evidence, prepares planning inputs.</span></article>
+          <article class="card"><span class="tag violet">Creative</span><strong>artist → Creative Director / Asset Specialist</strong><span>Visual concepts, style direction, illustrations, diagrams, infographics, pixel-art briefs, asset guidance.</span></article>
+          <article class="card"><span class="tag blue">Infrastructure</span><strong>ops → Infrastructure Engineer</strong><span>VPS, Hostinger, DNS, Nginx, permissions, services, deploy paths, operational troubleshooting.</span></article>
+          <article class="card"><span class="tag green">Knowledge</span><strong>librarian → Knowledge Manager</strong><span>GBrain/notes, durable decisions, receipts/docs organization, sync jobs, information hygiene.</span></article>
+        </div>
+      </section>
+
+      <section id="routing">
+        <h2>Routing policy</h2>
+        <div class="grid three">
+          <article class="card"><span class="tag gold">Escalate</span><strong>Use Senior Engineer when</strong><ul><li>Requirements are ambiguous</li><li>Architecture/design matters</li><li>Debugging is tricky</li><li>A cheaper lane failed</li><li>Reviewer finds deep design issues</li></ul></article>
+          <article class="card"><span class="tag blue">Multimodal</span><strong>Use coder-opencode when</strong><ul><li>Task is well-scoped</li><li>UI/visual/screenshot context matters</li><li>Large context helps</li><li>Cheaper first attempt is desirable</li></ul></article>
+          <article class="card"><span class="tag violet">Text</span><strong>Use coder-zai when</strong><ul><li>Task is text/code-only</li><li>Refactor/docs/repair pass</li><li>Alternate implementation useful</li><li>No visual/multimodal understanding needed</li></ul></article>
+        </div>
+      </section>
+
+      <section id="workflow">
+        <h2>Default workflow</h2>
+        <pre>CEO/user
+  → default cockpit/COO
+  → researcher or coder for clarification/spec if needed
+  → coder-opencode or coder-zai for scoped implementation
+  → reviewer and/or visual-reviewer gates
+  → repair pass if needed
+  → github-ops release/publish
+  → librarian captures durable decisions when useful</pre>
+        <p><strong>Kanban rule:</strong> if an implementation card has downstream review children and validation passes, the implementer completes the card. The child review cards are the review gate.</p>
+      </section>
+    </main>
+
+    <footer>
+      Draft organization document for Hermes AI-workshop profiles. See the Markdown source for the editable version.
+    </footer>
+  </div>
+</body>
+</html>
