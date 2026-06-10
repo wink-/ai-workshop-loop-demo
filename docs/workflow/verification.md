@@ -96,12 +96,12 @@ Passed.
 - Parent review card: `t_0c2a792b` — approved
 - Implement card: `t_a27b3f7e`
 - Spec card: `t_17994aa7`
-- Commit verified: `306cc92fe45523debac471dc8bbd5b047f5b92a3`
+- Commit verified: `249ab044bb5dc768a026d1184e6767e467d2a4ad`
 - Local validation:
   - `python3 scripts/validate_static_site.py`
   - `node --check scripts/ball_demo.js`
   - `git diff --check`
-- GitHub Pages run: https://github.com/wink-/ai-workshop-loop-demo/actions/runs/27291116744
+- GitHub Pages run: https://github.com/wink-/ai-workshop-loop-demo/actions/runs/27296364198
 - Live URL: https://wink-.github.io/ai-workshop-loop-demo/
 - Endpoint check: `HTTP/2 200`
 - Content checks passed for:
