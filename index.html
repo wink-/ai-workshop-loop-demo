@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A live GitHub Pages demo of a Hermes AI-workshop loop with role profiles, CLI workers, review gates, and deterministic verification.">
+  <title>Hermes AI Workshop Loop Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="hero">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="AI Workshop Loop Demo home">
+        <span class="brand-mark">⚕</span>
+        <span>AI Workshop Loop</span>
+      </a>
+      <div class="nav-links">
+        <a href="#loop">Loop</a>
+        <a href="#roles">Roles</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#ship">Ship</a>
+      </div>
+    </nav>
+
+    <section id="top" class="hero-grid" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Step 3 pilot · live GitHub Pages artifact</p>
+        <h1 id="hero-title">A small website built by an AI workshop, not a single prompt.</h1>
+        <p class="hero-subtitle">Hermes acted as cockpit. Dedicated role profiles and CLIs contributed research, implementation notes, publication guidance, review, and verification. This page shows who produced what and what evidence was used.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#evidence">View evidence</a>
+          <a class="button secondary" href="https://github.com/wink-/ai-workshop-loop-demo">Open repository</a>
+        </div>
+      </div>
+      <div class="terminal-card" role="img" aria-label="Workflow terminal summary">
+        <div class="terminal-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <pre><code>trigger: manual pilot
+state: repo + docs/workflow
+isolation: local git checkout
+maker: coder / claude-zai
+checker: reviewer / Gemini
+publisher: github-ops / gh + Copilot
+proof: tests + GitHub Pages URL</code></pre>
+      </div>
+    </section>
+  </header>
+
+  <main id="main">
+    <section id="loop" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">The loop</p>
+        <h2>From intent to published artifact</h2>
+        <p>Loop engineering means designing the system that prompts, checks, records, and repeats. This pilot runs the loop once, manually, before any cron or unattended autonomy.</p>
+      </div>
+      <ol class="timeline" aria-label="Workflow timeline">
+        <li>
+          <span class="step-number">01</span>
+          <h3>Cockpit plans</h3>
+          <p>Hermes default profile cleaned up the task: create a public demo repo, make the workflow visible, verify it, and publish it.</p>
+        </li>
+        <li>
+          <span class="step-number">02</span>
+          <h3>Researcher frames</h3>
+          <p>The researcher profile summarized loop engineering into discovery, framing, planning, execution, and verification.</p>
+        </li>
+        <li>
+          <span class="step-number">03</span>
+          <h3>Coder implements</h3>
+          <p>claude-zai produced the implementation plan. Hermes converted it into a static HTML/CSS site with traceable artifacts.</p>
+        </li>
+        <li>
+          <span class="step-number">04</span>
+          <h3>Reviewer checks</h3>
+          <p>Gemini reviews the final diff and reports correctness, accessibility, and deployment risks before publication.</p>
+        </li>
+        <li>
+          <span class="step-number">05</span>
+          <h3>GitHub Ops publishes</h3>
+          <p>gh creates and configures the repository. Copilot contributes publication guidance. GitHub Actions deploys Pages.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="roles" class="section alt">
+      <div class="section-heading">
+        <p class="eyebrow">Attribution</p>
+        <h2>Each role leaves a receipt</h2>
+        <p>Every non-trivial contribution is recorded as an artifact so the loop can be audited later.</p>
+      </div>
+      <div class="role-grid">
+        <article class="role-card cockpit">
+          <p class="role-tag">Hermes · default</p>
+          <h3>Cockpit / final verifier</h3>
+          <p>Created the repo, orchestrated the workers, wrote the final artifact, ran deterministic checks, and will verify deployment.</p>
+          <a href="docs/workflow/cockpit-plan.md">Read cockpit plan</a>
+        </article>
+        <article class="role-card researcher">
+          <p class="role-tag">Hermes profile · researcher</p>
+          <h3>Discovery and framing</h3>
+          <p>Explained the core loop shape and what the demo needs to prove.</p>
+          <a href="artifacts/researcher-discovery.md">Read researcher artifact</a>
+        </article>
+        <article class="role-card coder">
+          <p class="role-tag">CLI worker · claude-zai</p>
+          <h3>Implementation plan</h3>
+          <p>Specified the static-site file structure, visual style, and validation commands.</p>
+          <a href="artifacts/coder-implementation-note.md">Read coder artifact</a>
+        </article>
+        <article class="role-card reviewer">
+          <p class="role-tag">CLI reviewer · Gemini</p>
+          <h3>Review gate</h3>
+          <p>Reviews the final diff separately from the maker before the site is published.</p>
+          <a href="docs/workflow/reviewer-report.md">Read reviewer report</a>
+        </article>
+        <article class="role-card github">
+          <p class="role-tag">Profile · github-ops + Copilot</p>
+          <h3>Publication path</h3>
+          <p>Documents repo creation, Pages deployment, CI signal, and live URL evidence.</p>
+          <a href="artifacts/github-ops-publication.md">Read GitHub Ops artifact</a>
+        </article>
+        <article class="role-card verifier">
+          <p class="role-tag">Deterministic tools</p>
+          <h3>Proof, not prose</h3>
+          <p>Python checks, git status, Actions status, and the live Pages endpoint confirm whether the loop actually worked.</p>
+          <a href="docs/workflow/verification.md">Read verification log</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="evidence" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Evidence ledger</p>
+        <h2>What produced each piece?</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Loop step</th>
+              <th scope="col">Profile / CLI</th>
+              <th scope="col">Output</th>
+              <th scope="col">Verification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Plan</td>
+              <td>default Hermes cockpit</td>
+              <td><code>docs/workflow/cockpit-plan.md</code></td>
+              <td>Task fields, acceptance criteria, gates recorded.</td>
+            </tr>
+            <tr>
+              <td>Research</td>
+              <td><code>hermes -p researcher</code></td>
+              <td><code>artifacts/researcher-discovery.md</code></td>
+              <td>Artifact is linked and included in repo.</td>
+            </tr>
+            <tr>
+              <td>Implementation plan</td>
+              <td><code>claude-zai</code></td>
+              <td><code>artifacts/coder-implementation-note.md</code></td>
+              <td>Hermes built files from plan and checked them locally.</td>
+            </tr>
+            <tr>
+              <td>Publication guidance</td>
+              <td><code>copilot</code> under github-ops role</td>
+              <td><code>artifacts/github-ops-publication.md</code></td>
+              <td>gh repo and Pages commands are run directly.</td>
+            </tr>
+            <tr>
+              <td>Review</td>
+              <td><code>gemini</code></td>
+              <td><code>docs/workflow/reviewer-report.md</code></td>
+              <td>Separate reviewer, then Hermes verification.</td>
+            </tr>
+            <tr>
+              <td>Publish</td>
+              <td><code>gh</code> + GitHub Actions</td>
+              <td>Repository and Pages deployment</td>
+              <td>Actions status and live URL checked after push.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="ship" class="section ship">
+      <div>
+        <p class="eyebrow">Why this matters</p>
+        <h2>The leverage point moved.</h2>
+        <p>This demo is intentionally small. The value is not the page itself; it is the repeatable control surface: role profiles, durable artifacts, maker/checker separation, and real verification before publication.</p>
+      </div>
+      <div class="ship-card">
+        <h3>Next maturity step</h3>
+        <p>Turn this manual pilot into a Kanban-backed loop: approved card → worktree → coder → reviewer → verifier → GitHub Ops PR.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built as Step 3 of the Hermes AI Workshop workflow.</p>
+    <p><a href="https://github.com/wink-/ai-workshop-loop-demo">Source on GitHub</a></p>
+  </footer>
+</body>
+</html>
