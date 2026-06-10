@@ -65,3 +65,26 @@ Lessons captured:
 - Kanban workers must not run foreground servers as validation unless backgrounded/tracked.
 - `github-ops` profile needs GitHub CLI auth available inside its profile HOME.
 
+## v3 loop supervisor publication
+Passed.
+
+- Board: `ai-workshop-loop-demo`
+- Publish card: `t_790980b9` — done after validation and deploy verification
+- Commit verified: `bb9bcf25c0560d6f290f5302a641840fd91f999e`
+- Local validation:
+  - `python3 scripts/validate_static_site.py`
+  - `python3 scripts/loop_supervisor.py --board ai-workshop-loop-demo --dry-run --state-file /tmp/ai-workshop-loop-demo-supervisor-test.json`
+  - `git diff --check`
+- GitHub Pages run: https://github.com/wink-/ai-workshop-loop-demo/actions/runs/27295079847
+- Live URL: https://wink-.github.io/ai-workshop-loop-demo/
+- Endpoint check: `HTTP/2 200`
+- Content checks passed for:
+  - `v3 supervisor`
+  - `Script-only board supervision`
+  - `scripts/loop_supervisor.py`
+  - `loop-supervisor-v3.md`
+
+Notes:
+- The v3 supervisor keeps state outside the worktree by default in `~/.hermes/state/ai-workshop-loop-demo/loop-supervisor.json`.
+- The supervisor reports only status changes and attention items, and it can skip dispatch entirely in dry-run mode.
+
