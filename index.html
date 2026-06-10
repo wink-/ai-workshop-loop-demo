@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A live GitHub Pages demo of a Hermes AI-workshop loop with role profiles, Kanban-backed v2 workflow rules, review gates, and deterministic verification.">
+  <meta name="description" content="A live GitHub Pages demo of a Hermes AI-workshop loop with role profiles, Kanban-backed v2 workflow rules, review gates, deterministic verification, and a script-only v3 loop supervisor.">
   <title>Hermes AI Workshop Loop Demo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +21,7 @@
       <div class="nav-links">
         <a href="#loop">Loop</a>
         <a href="#workflow-v2">v2 workflow</a>
+        <a href="#workflow-v3">v3 supervisor</a>
         <a href="#roles">Roles</a>
         <a href="#evidence">Evidence</a>
         <a href="#ship">Ship</a>
@@ -31,7 +32,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Step 3 pilot · live GitHub Pages artifact</p>
         <h1 id="hero-title">A small website built by an AI workshop, not a single prompt.</h1>
-        <p class="hero-subtitle">Hermes acted as cockpit. Dedicated role profiles and CLIs contributed research, implementation notes, publication guidance, review, and verification. The v2 flow adds a Kanban board as the live source of truth for active work while Markdown files explain the rules.</p>
+        <p class="hero-subtitle">Hermes acted as cockpit. Dedicated role profiles and CLIs contributed research, implementation notes, publication guidance, review, and verification. The v2 flow adds a Kanban board as the live source of truth for active work while Markdown files explain the rules. V3 adds a script-only supervisor that polls, diffs, and dispatches without turning the chat into the event loop.</p>
         <div class="hero-actions">
           <a class="button primary" href="#evidence">View evidence</a>
           <a class="button secondary" href="https://github.com/wink-/ai-workshop-loop-demo">Open repository</a>
@@ -44,6 +45,7 @@ workflow: v2 Kanban-backed loop
 board: ai-workshop-loop-demo
 source of truth: Kanban card state
 docs: Markdown task + workflow receipts
+supervisor: scripts/loop_supervisor.py
 maker: coder / claude-zai
 checker: reviewer / Gemini
 publisher: github-ops / gh + Copilot
@@ -118,6 +120,32 @@ proof: tests + GitHub Pages URL</code></pre>
           <h3>Static site surfaces the workflow</h3>
           <p>The landing page explains the v2 pattern so visitors can understand the board, the docs, and the verification trail together.</p>
           <a href="docs/workflow/kanban-backed-workflow.md">Read the v2 workflow doc</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="workflow-v3" class="section alt">
+      <div class="section-heading">
+        <p class="eyebrow">v3 supervisor</p>
+        <h2>Script-only board supervision</h2>
+        <p>V3 keeps the board moving without turning the cockpit into a chat-driven event loop. A small Python script polls, diffs, and dispatches the Kanban board with deterministic subprocess calls.</p>
+      </div>
+      <div class="role-grid">
+        <article class="role-card cockpit">
+          <p class="role-tag">Trigger</p>
+          <h3>Poll first, dispatch only when allowed</h3>
+          <p>The supervisor snapshots the board, reports only new changes or attention items, and can skip dispatch entirely in dry-run mode.</p>
+          <a href="docs/workflow/loop-supervisor-v3.md">Read v3 supervisor doc</a>
+        </article>
+        <article class="role-card verifier">
+          <p class="role-tag">State</p>
+          <h3>State stays outside the repo</h3>
+          <p>By default the JSON state file lives under <code>~/.hermes/state/ai-workshop-loop-demo/</code>, keeping the worktree clean and the last snapshot durable.</p>
+        </article>
+        <article class="role-card github">
+          <p class="role-tag">Limits</p>
+          <h3>No shell=True, no foreground server</h3>
+          <p>All Kanban calls go through explicit <code>subprocess</code> argv lists. Validation stays script-based so the loop does not depend on a running HTTP server.</p>
         </article>
       </div>
     </section>

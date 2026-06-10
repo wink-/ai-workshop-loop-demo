@@ -66,6 +66,7 @@ for expected in [
     "docs/workflow/cockpit-plan.md",
     "docs/workflow/kanban-backed-workflow.md",
     "docs/workflow/markdown-task-vs-kanban-card.md",
+    "docs/workflow/loop-supervisor-v3.md",
     "docs/workflow/verification.md",
 ]:
     if not (ROOT / expected).exists():
