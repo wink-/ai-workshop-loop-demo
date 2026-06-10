@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A live GitHub Pages demo of a Hermes AI-workshop loop with role profiles, CLI workers, review gates, and deterministic verification.">
+  <meta name="description" content="A live GitHub Pages demo of a Hermes AI-workshop loop with role profiles, Kanban-backed v2 workflow rules, review gates, and deterministic verification.">
   <title>Hermes AI Workshop Loop Demo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,7 @@
       </a>
       <div class="nav-links">
         <a href="#loop">Loop</a>
+        <a href="#workflow-v2">v2 workflow</a>
         <a href="#roles">Roles</a>
         <a href="#evidence">Evidence</a>
         <a href="#ship">Ship</a>
@@ -30,7 +31,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Step 3 pilot · live GitHub Pages artifact</p>
         <h1 id="hero-title">A small website built by an AI workshop, not a single prompt.</h1>
-        <p class="hero-subtitle">Hermes acted as cockpit. Dedicated role profiles and CLIs contributed research, implementation notes, publication guidance, review, and verification. This page shows who produced what and what evidence was used.</p>
+        <p class="hero-subtitle">Hermes acted as cockpit. Dedicated role profiles and CLIs contributed research, implementation notes, publication guidance, review, and verification. The v2 flow adds a Kanban board as the live source of truth for active work while Markdown files explain the rules.</p>
         <div class="hero-actions">
           <a class="button primary" href="#evidence">View evidence</a>
           <a class="button secondary" href="https://github.com/wink-/ai-workshop-loop-demo">Open repository</a>
@@ -39,8 +40,10 @@
       <div class="terminal-card" role="img" aria-label="Workflow terminal summary">
         <div class="terminal-dots" aria-hidden="true"><span></span><span></span><span></span></div>
         <pre><code>trigger: manual pilot
-state: repo + docs/workflow
-isolation: local git checkout
+workflow: v2 Kanban-backed loop
+board: ai-workshop-loop-demo
+source of truth: Kanban card state
+docs: Markdown task + workflow receipts
 maker: coder / claude-zai
 checker: reviewer / Gemini
 publisher: github-ops / gh + Copilot
@@ -85,6 +88,40 @@ proof: tests + GitHub Pages URL</code></pre>
       </ol>
     </section>
 
+    <section id="workflow-v2" class="section alt">
+      <div class="section-heading">
+        <p class="eyebrow">v2 workflow</p>
+        <h2>Kanban-backed work, Markdown-backed explanation</h2>
+        <p>The board moves the task; the docs explain the rules and preserve the handoff context for humans.</p>
+      </div>
+      <div class="role-grid">
+        <article class="role-card cockpit">
+          <p class="role-tag">Board slug</p>
+          <h3><code>ai-workshop-loop-demo</code></h3>
+          <p>This is the live board for the demo. Its cards carry active status, assignee, dependency order, and comments. Current iteration starts at <code>t_3f556e8a</code>.</p>
+          <a href="docs/workflow/kanban-backed-workflow.md">Read workflow rules</a>
+        </article>
+        <article class="role-card reviewer">
+          <p class="role-tag">Source of truth</p>
+          <h3>Kanban wins for live state</h3>
+          <p>If the card and a Markdown receipt disagree, the current board card wins for status, ownership, and dependencies.</p>
+          <a href="docs/workflow/kanban-backed-workflow.md">Read source-of-truth rules</a>
+        </article>
+        <article class="role-card coder">
+          <p class="role-tag">Markdown task</p>
+          <h3>Readable spec, not live state</h3>
+          <p>Markdown is where the workflow gets explained, summarized, and linked from the site. It is a companion artifact, not the scheduler.</p>
+          <a href="docs/workflow/markdown-task-vs-kanban-card.md">Read task-vs-card guide</a>
+        </article>
+        <article class="role-card github">
+          <p class="role-tag">How it shows up here</p>
+          <h3>Static site surfaces the workflow</h3>
+          <p>The landing page explains the v2 pattern so visitors can understand the board, the docs, and the verification trail together.</p>
+          <a href="docs/workflow/kanban-backed-workflow.md">Read the v2 workflow doc</a>
+        </article>
+      </div>
+    </section>
+
     <section id="roles" class="section alt">
       <div class="section-heading">
         <p class="eyebrow">Attribution</p>
@@ -95,7 +132,7 @@ proof: tests + GitHub Pages URL</code></pre>
         <article class="role-card cockpit">
           <p class="role-tag">Hermes · default</p>
           <h3>Cockpit / final verifier</h3>
-          <p>Created the repo, orchestrated the workers, wrote the final artifact, ran deterministic checks, and will verify deployment.</p>
+          <p>Created the repo, orchestrated the workers, wrote the final artifact, ran deterministic checks, and verified deployment.</p>
           <a href="docs/workflow/cockpit-plan.md">Read cockpit plan</a>
         </article>
         <article class="role-card researcher">

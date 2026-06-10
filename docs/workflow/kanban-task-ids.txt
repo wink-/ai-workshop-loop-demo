@@ -1,0 +1,6 @@
+Board: ai-workshop-loop-demo
+
+Spec card: t_3f556e8a
+Implement card: t_b8d4a9d2
+Review card: t_758c23a3
+Publish card: t_373c87c3

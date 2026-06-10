@@ -1,20 +1,30 @@
+# Reviewer report
+
+## Initial site review
+
 **Verdict: APPROVED**
 
 **Critical issues:**
-* None. Static validation confirms links, assets, and artifacts are present and correctly referenced. 
+* None. Static validation confirmed links, assets, and artifacts were present and correctly referenced.
 
 **Important issues:**
-* **Markdown Links on GitHub Pages:** Links to evidence artifacts (e.g., `docs/workflow/cockpit-plan.md`) point directly to `.md` files. Because there is no `.nojekyll` file, GitHub Pages will process these with Jekyll by default. This might result in unstyled HTML being served, or broken links if Jekyll rewrites them to `.html`. Consider adding a `.nojekyll` file to the root, or linking directly to the GitHub repository blob URLs for a better reading experience.
+* **Markdown Links on GitHub Pages:** Links to evidence artifacts pointed directly to `.md` files. Without `.nojekyll`, GitHub Pages could process them with Jekyll. Fixed by adding root `.nojekyll`.
 
 **Minor suggestions:**
-* **Semantic HTML:** The timeline list uses `<h3>` for step titles. Depending on the broader document outline, this could be seen as skipping heading levels (e.g., jumping from `<h2>` in the section heading directly to multiple `<h3>`s). 
-* **Accessibility:** The `aria-hidden="true"` on the terminal dots is great. You could further enhance the evidence table by adding scope attributes (`scope="col"`) to the `<th>` elements.
+* Added `scope="col"` to evidence table headers.
 
 **Verification gaps:**
-* **GitHub Pages Build Simulation:** The local Python validation script (`scripts/validate_static_site.py`) confirms local file presence and references but does not test the final deployed GitHub Pages output. A check simulating the Jekyll build or verifying the deployed endpoints post-publish would close this gap.
+* Local validation did not prove final deployed Pages output. Closed by checking the deployed endpoint and recording evidence in `verification.md`.
 
-## Cockpit follow-up
+## v2 Kanban-backed workflow review
 
-- Added root `.nojekyll` so GitHub Pages serves the linked Markdown artifacts as static files.
-- Added `scope="col"` to evidence table headers.
-- Deployment endpoint verification is tracked in `docs/workflow/verification.md` after push.
+Kanban card: `t_758c23a3`
+
+Reviewer summary from Hermes Kanban:
+
+> Review of v2 Kanban workflow update complete. The documentation is clear, accurate, and correctly separates operational status (Kanban) from durable explanation (Markdown). APPROVED.
+
+Cockpit follow-up:
+- Added the board slug and first task ID to the site.
+- Saved task graph IDs in `docs/workflow/kanban-task-ids.txt`.
+- Recorded the worker recovery lesson: foreground servers must not be used as validation commands in unattended Kanban tasks unless backgrounded/tracked.

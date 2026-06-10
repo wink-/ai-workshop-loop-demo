@@ -1,6 +1,6 @@
 # AI Workshop Loop Demo
 
-A GitHub Pages demo site showing a Hermes AI-workshop workflow: cockpit planning, researcher discovery, coder implementation, reviewer gate, GitHub ops publication, and deterministic verification.
+A GitHub Pages demo site showing a Hermes AI-workshop workflow: cockpit planning, researcher discovery, coder implementation, reviewer gate, GitHub ops publication, deterministic verification, and the v2 Kanban-backed workflow.
 
 Live site after deployment:
 
@@ -9,6 +9,8 @@ https://wink-.github.io/ai-workshop-loop-demo/
 ## Workflow receipts
 
 - Cockpit plan: `docs/workflow/cockpit-plan.md`
+- Kanban workflow guide: `docs/workflow/kanban-backed-workflow.md`
+- Markdown task guide: `docs/workflow/markdown-task-vs-kanban-card.md`
 - Researcher artifact: `artifacts/researcher-discovery.md`
 - Coder artifact: `artifacts/coder-implementation-note.md`
 - GitHub Ops artifact: `artifacts/github-ops-publication.md`
