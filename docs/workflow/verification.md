@@ -46,3 +46,22 @@ Content checks passed for:
 - `GitHub Ops publishes`
 
 Browser verification loaded the page title: `Hermes AI Workshop Loop Demo`.
+
+## v2 Kanban workflow iteration
+Passed.
+
+- Board: `ai-workshop-loop-demo`
+- Spec card: `t_3f556e8a` — done
+- Implement card: `t_b8d4a9d2` — done, recovered after foreground server hang
+- Review card: `t_758c23a3` — done, reviewer APPROVED
+- Publish card: `t_373c87c3` — recovered after github-ops profile auth fix, then deployed
+- Commit verified: `6f98d91dfbd4656a89b6550219352a221d39fabb`
+- Actions run: https://github.com/wink-/ai-workshop-loop-demo/actions/runs/27292591347
+- Live URL: https://wink-.github.io/ai-workshop-loop-demo/
+
+Lessons captured:
+- Kanban card is the source of truth for active status, assignee, dependencies, and comments.
+- Markdown task/spec files are durable explanations and receipts, not live schedulers.
+- Kanban workers must not run foreground servers as validation unless backgrounded/tracked.
+- `github-ops` profile needs GitHub CLI auth available inside its profile HOME.
+
