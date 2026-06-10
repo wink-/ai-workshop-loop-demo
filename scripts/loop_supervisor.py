@@ -185,6 +185,12 @@ def dispatch(board: str, dispatch_max: int) -> dict[str, Any]:
     return {}
 
 
+def item_id(item: Any) -> str:
+    if isinstance(item, dict):
+        return str(item.get("task_id") or item.get("id") or item)
+    return str(item)
+
+
 def main() -> int:
     args = parse_args()
     state_path = Path(args.state_file).expanduser()
@@ -229,13 +235,13 @@ def main() -> int:
             if promoted:
                 bits.append(f"promoted={promoted}")
             if spawned:
-                bits.append("spawned=" + ",".join(str(item.get("task_id", item)) for item in spawned))
+                bits.append("spawned=" + ",".join(item_id(item) for item in spawned))
             if auto_blocked:
-                bits.append("auto_blocked=" + ",".join(str(item.get("task_id", item)) for item in auto_blocked))
+                bits.append("auto_blocked=" + ",".join(item_id(item) for item in auto_blocked))
             if crashed:
-                bits.append("crashed=" + ",".join(str(item.get("task_id", item)) for item in crashed))
+                bits.append("crashed=" + ",".join(item_id(item) for item in crashed))
             if timed_out:
-                bits.append("timed_out=" + ",".join(str(item.get("task_id", item)) for item in timed_out))
+                bits.append("timed_out=" + ",".join(item_id(item) for item in timed_out))
             reports.append("dispatch " + "; ".join(bits))
 
     deduped: list[str] = []
